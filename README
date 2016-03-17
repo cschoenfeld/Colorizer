@@ -1,0 +1,40 @@
+	Color helper classes.
+	
+	Generate SVG filters that can be used to apply color overlays 
+	to images in a web page via CSS.
+	
+	@author Charles Schoenfeld
+
+	STEP 1:
+	To write an SVG filter definition into your HTML, do the following. 
+
+		<?php
+		include_once '/path/to/Colorizer.php';
+		try {
+			/*
+				In this example, you're trying to apply a 60% tint of orange 
+				to some of the images in your page.
+			*/
+			$filterName = 'colorizeOrange';
+			$colorOrange = new CSchoenfeld\ColorSpec();
+			$colorOrange->setHex('f16234');
+			$colorStrength = 60;
+			$orangeFilter = CSchoenfeld\Colorizer::makeFilter($filterName, $colorOrange, $colorStrength);
+			echo $orangeFilter;
+		} catch (Exception $ex) {
+			// Handle any exceptions here.
+		}
+		?>
+	
+	STEP 2:
+	Reference this filter in your CSS, for browsers that support it.
+	
+		.orangeImage {
+			filter: url(#colorizeOrange);
+			-webkit-filter: url(#colorizeOrange);
+		}
+	
+	And apply that CSS class to the image in your HTML.
+	
+		<img src="myimage.png" class="orangeImage" alt="orange image">
+ 
