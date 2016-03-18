@@ -9,7 +9,8 @@
 	To write an SVG filter definition into your HTML, do the following. 
 
 		<?php
-		include_once '/path/to/Colorizer.php';
+		use CSchoenfeld\ColorSpec;
+		use CSchoenfeld\Colorizer;
 		try {
 			/*
 				In this example, you're trying to apply a 60% tint of orange 
